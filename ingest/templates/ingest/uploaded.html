@@ -1,0 +1,7 @@
+<section>
+    {% if context %}
+        {% for k, v in context.items %}
+            <li>{{ k }}: {{ v }}</li>
+        {% endfor %}
+    {% endif %}
+</section>

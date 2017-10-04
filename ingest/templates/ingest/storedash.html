@@ -1,0 +1,22 @@
+{% load staticfiles %}
+<section class="ui container repo-area">
+    <header>
+         <h2>Respositories</h2>
+         <div class="ui section divider"></div>
+    </header>
+    {% if repos %}
+    <div class="ui five column grid">
+       {% for r in repos %}
+        <div class="column">
+            <div class="item center-aligned repository">
+                <div class="">
+                  <span class="icon icon-folder folder-closed" data-repo-id="{{ r.id }}"></span>
+                </div>
+                <h4>{{ r.name }}</h4>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+</section>
+<script src="{% static 'ingest/js/store.js' %}"></script>

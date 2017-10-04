@@ -1,0 +1,51 @@
+{% load staticfiles %}
+<section class="ui container repo-area">
+    <header class="ui four column grid">
+        <div class="column"><h3><span class="icon blue icon-folder-open folder-small"></span>{{ repository.name }}</h3></div>
+        <div class="column">
+            <div class="ui teal huge label">
+              Size
+              <div class="detail">{{ repository.repo_size|filesizeformat }}</div>
+            </div>
+        </div>
+        <div class="column"></div>
+        <div class="column">
+            <div class="ui right floated blue buttons">
+                <button class="ui button"><span class="icon icon-arrow-left2"></span></button>
+                <button class="ui button"><i class="grid layout icon"></i></button>
+                <button class="ui button"><i class="list layout icon"></i></button>
+            </div>
+        </div>
+    </header>
+    <div class="ui section divider"></div>
+
+    <section class="ui container table-view">
+        <table class="content-table">
+            <tbody>
+            {% for f in files %}
+                <tr>
+                    <td><span class="icon icon-file-picture"></span></td>
+                    <td>{{ f.content_name }}</td>
+                    {% for k, v in meta.items %}
+                      {% if f.content_name == k %}
+                        <td>{{ v.file_size|filesizeformat }}</td>
+                        <td>{{ v.file_type }}</td>
+                        <td>{{ v.date_uploaded }}</td>
+                        <td>{{ v.meta_tags }}</td>
+                      {% endif %}
+                    {% endfor %}
+                    <td><a href="{{ f.file.url }}"><span class="icon icon-download3"></span></a></td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </section>
+
+
+    <!-- Icon View -->
+    <section class="ui container">
+        <div class="">
+
+        </div>
+    </section>
+</section>

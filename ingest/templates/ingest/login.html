@@ -1,0 +1,69 @@
+{% load staticfiles %}
+<!Doctype html>
+<html>
+    <head>
+        <meta charset='utf-8'/>
+        <title>archiva:perservation made easy</title>        
+        <!-- All stylesheets -->
+        <link rel="stylesheet" href="{% static 'ingest/css/semantic.css' %}" />
+        <link rel="stylesheet" href="{% static 'ingest/css/icons.css' %}" />
+        <link rel="stylesheet" href="{% static 'ingest/css/main.css' %}" />
+         <link rel="stylesheet" href="{% static 'ingest/css/reg.css' %}" />
+    </head>
+    <body class="body-w">
+        <!-- header and navigation area 
+        <header class="ui fixed menu">
+             <div class="ui item bar">
+                 <a href="{% url 'ingest:index' %}">
+                     <h2 class="ui header"><span class="icon icon-book "></span>Archiva</h2>
+                 </a>
+              </div>
+        </header>-->
+        
+        <header class="ui container formhead slim">
+            <a href="{% url 'ingest:index' %}">
+                <h2><span class="icon icon-book"></span>&nbsp;Archiva</h2>
+            </a>
+        </header>
+        <!-- -->
+        <section class="ui container mediumwidth">
+             <div class="ui three column grid c">
+                <div class="row strip">
+                    <div class="column dblue"></div>
+                    <div class="column lgray"></div>
+                    <div class="column dblue"></div>
+                </div>
+            </div>
+            <header class="ui container formhead">
+                <h1>Login</h1>
+            </header>
+            <form class="ui equal width form fluid signup" action="{% url 'ingest:login' %}" method="POST">
+                {% csrf_token %}
+                 <div class="fourteen wide field"> 
+                     <label for="firstname">Username</label>        
+                     <input type="text" name="username" placeholder="johndoe@gmail.com" />
+                </div>
+                 <div class="fourteen wide field"> 
+                     <label for="firstname">Password</label>
+                     <input type="password" name="password" placeholder="********" />
+                </div>
+                <div class="sixteen wide field">
+                     <div>
+                        <span style="color: red">{{ error }}</span>
+                    </div>
+                    <button class="ui large submit button" type="submit" name="login" value="logged">
+                        <span class="icon icon-enter"></span>Sign in
+                    </button>
+                    <div class="new-user" style="color:deepskyblue; margin:2em auto 2em auto">
+                        Don't have an account click <a href="{% url 'ingest:signup' %}"><u>here</u></a> to create one
+                    </div>
+                </div>
+            </form>           
+        </section>
+        <footer class="ui container">
+            miisoft corp
+        </footer>
+    </body>    
+    <!-- Script files -->
+    <script src=""></script>       
+</html>

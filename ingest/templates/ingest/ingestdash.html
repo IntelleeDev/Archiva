@@ -1,0 +1,64 @@
+{% extends "ingest/homedash.html" %}
+{% block controls %}
+     <article class="ui relaxed divided list container">
+        <a href="{% url 'ingest:homedash' user.id %}"><div class="item btn"><span class="icon icon-home"></span>Home</div></a>
+        <a href="{% url 'ingest:ingestdash' user.id %}"><div class="item btn actives"><span class="icon icon-cloud-upload"></span>Ingest</div></a>
+        <div class="item btn"><span class="icon icon-database"></span>Store</div>
+        <div class="item btn"><span class="icon icon-search"></span>Search</div>
+        <div class="item btn"><span class="icon icon-cogs"></span>Settings</div>
+        <div class="item btn"><span class="icon icon-bubbles4"></span>How tos</div>
+    </article>
+{% endblock %}
+{% block content %}
+
+    <div>
+        <div class="ingest-one">
+            <div class="ui inline form">
+                <div class="field">
+                    <div><h2>select repository</h2></div>
+                    <div class="four wide field">
+                        <select name="reponame" class="ui fluid dropdown">
+                            <option>Western sites</option>
+                            <option>Final year project 2012</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="">
+                <button id="create-repo" class="ui primary button">create repository</button>
+            </div>
+
+
+
+<div class="ui modal">
+  <i class="close icon"></i>
+  <div class="header">
+    Create Repository
+  </div>
+  <div class="image content">
+    <div class="ui medium image">
+      <img src="/images/avatar/large/chris.jpg">
+    </div>
+    <div class="description">
+      <div class="ui header">We've auto-chosen a profile image for you.</div>
+      <p>We've grabbed the following image from the <a href="https://www.gravatar.com" target="_blank">gravatar</a> image associated with your registered e-mail address.</p>
+      <p>Is it okay to use this photo?</p>
+    </div>
+  </div>
+  <div class="actions">
+    <div class="ui black deny button">
+      Cancel
+    </div>
+    <div class="ui positive right labeled icon button">
+      Done
+      <i class="checkmark icon"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+            </div>
+    </div>
+{% endblock %}

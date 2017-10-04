@@ -1,0 +1,68 @@
+{% load staticfiles %}
+<!Doctype html>
+<html>
+    <head>
+        <meta charset='utf-8'/>
+        <title>archiva:perservation made easy</title>        
+        <!-- All stylesheets -->
+        <link rel="stylesheet" href="{% static 'ingest/css/semantic.css' %}" />
+        <link rel="stylesheet" href="{% static 'ingest/css/icons.css' %}" />
+        <link rel="stylesheet" href="{% static 'ingest/css/main.css' %}" />
+    </head>
+    <body>
+        <header class="ui fixed menu home">
+            <div class="item blue-c">
+                <a href="{% url 'ingest:index' %}">
+                    <h2 class="ui inverted header"><span class="icon icon-book"></span>Archiva</h2>
+                </a>
+            </div>
+            <nav class="ui container transparent">                
+                <div class="ui right item">
+                    <div class="ui orange medium button"><span class="icon icon-enter"></span>signin</div>
+                    <div class="ui blue medium button"><span class="icon icon-clipboard"></span>signup</div>
+                </div>               
+            </nav>
+        </header>
+         <div class="overlay"></div> 
+        <!-- Billboard -->
+        <section class="ui container bill bill-img">                              
+            <div class="ui text-center container">
+                <h1 class="ui inverted header caption">
+                   Keep track of all your Undergraduate projects</h1>
+                <h2>archiva makes preservation easy</h2>
+                <button class="ui large primary button"><span class="icon icon-point-right"></span>Get started!</button>
+            </div>
+        </section>
+        
+        <!-- Main content -->
+        <section class="ui middle">
+            <div class="ui container frame">
+                <div class="ui three column grid">
+                    <div class="row stickyinfo">
+                        <div class="column"></div>
+                        <div class="column"></div>
+                        <div class="column"></div>
+                    </div>
+                </div>   
+            </div>          
+        </section>
+    </body>    
+    <!-- Script files -->
+    <script src="{% static 'ingest/js/jquery-1.11.2.min.js' %}"></script>
+    <script src="{% static 'ingest/css/semantic.js' %}"></script>
+    <script>
+        window.onload = function() {
+            var btns = document.getElementsByTagName('button');
+
+            var toLogin = function() {
+                window.location = "{% url 'ingest:login' %}"
+            }
+
+            var toSignUp = function() {
+                window.location = "{% url 'ingest:signup' %}"
+            }
+
+            btns[0].addEventListener('click', toLogin, false);
+        }
+    </script>
+</html>

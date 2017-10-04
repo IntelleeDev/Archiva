@@ -1,0 +1,141 @@
+{% load staticfiles %}
+<section class="ui container repo-area">
+
+</section>
+<header>
+     <h2 id="tracker">Ingest</h2>
+     <div class="ui section divider"></div>
+</header>
+<section class="ui ten column grid ingest">
+<article class="column ui center container">
+    <!-- select repository -->
+    <form id="create-form">
+        {% csrf_token %}
+        <div class="repo-selection-area">
+             <div class="ui form">
+                 <div class="">
+                    <h3>Select repository</h3>
+                    <div class="thin-bar"></div>
+                 </div>
+                 {% if repo %}
+                 <div class="grouped fields">
+                     {% for r in repo %}
+                        <div class="field">
+                             <div class="ui radio checkbox">
+                                 <input type="radio" name="title" value="{{r.name}}" checked="checked" tabindex="0" class="hidden"/>
+                                 <label><p><span class="icon icon-folder"></span> &nbsp;&nbsp;{{ r.name }}</p></label>
+                             </div>
+                        </div>
+                     {% endfor %}
+                 </div>
+                 {% endif %}
+                 <br/>
+                 <div class="">
+                    <h3>Create repository</h3>
+                    <div class="thin-bar"></div>
+                 </div>
+                 <div class="ui form">
+                     <div class="field">
+                        <label>Repository name</label>
+                        <input type="text" name="name" placeholder="Repository name">
+                     </div>
+                     <div>
+                         <button id="create" class="ui button">Create</button>
+                     </div>
+                 </div>
+             </div>
+        </div>
+    </form>
+</article>
+     <div class="column"></div>
+
+<article id="file-btn" class="column ui container upload-area">
+    <div class="deep-img">
+        <span class="icon icon-upload"></span>
+    </div>
+     <!-- File Upload area -->
+    <div class="actions-t">
+        <h2 class="cap-head">Click to open file</h2>
+    </div>
+</article>
+
+<article class="column ui container show-area">
+    <div class="file-icon">
+        <span class="icon icon-file-pdf"></span>
+    </div>
+    <div class="info-area">
+        <h4>Filename:<span id="filename">mega.pdf</span></h4>
+        <h4>File size:<span id="size">8mb</span></h4>
+        <h4>File type:<span id="type">8mb</span></h4>
+    </div>
+    <div class="action-area">
+        <button id="upload-btn" class="ui large red button">upload files</button>
+    </div>
+</article>
+
+
+     <form id="file-upload-form" enctype="multipart/form-data">
+        {% csrf_token %}
+        <input id="file" type="file" name="content" hidden/>
+    </form>
+
+    <div class="column"></div>
+    <div class="column"></div>
+    <div class="column"></div>
+    <div class="column"></div>
+    <div class="column"></div>
+
+</section>
+
+<section class="modal-area">
+        <article class="ui small modal">
+            <i class="close icon"></i>
+          <div class="header">Please provide additional information for the file</div>
+          <div class="content">
+              <div class="ui equal width form fluid">
+                 <div class="fourteen wide field">
+                     <label for="firstname">Tags: provide tags to indentify the file</label>
+                     <input id="tag" type="text" name="tags" placeholder="eg food ordering system, cloud computing, research" />
+                </div>
+                 <div class="fourteen wide field">
+                     <label for="firstname">Description: a brief description of the file contents</label>
+                     <input id="desc" type="text" name="description" placeholder="a brief description of the file" />
+                </div>
+              </div>
+          </div>
+            <div class="actions">
+                <button id="back" class="ui medium grey button"><span class="icon "></span>Back</button>
+                <button id="save" class="ui medium green button"><span class="icon icon-enter"></span>Save</button>
+            </div>
+        </article>
+</section>
+
+<section class="ui container progress-track">
+    <table class="status-table">
+        <thead>
+            <tr>
+                <td>Check name</td>
+                <td>Description</td>
+                <td>Status</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>File format check</td>
+                <td>Checks file format for suppport</td>
+                <td>success</td>
+            </tr>
+             <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+             <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+<script src="{% static 'ingest/js/Repo.js' %}"></script>

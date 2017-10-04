@@ -1,0 +1,22 @@
+{% load staticfiles%}
+<!Doctype html>
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>Ingestion</title>
+    </head>
+    <body>
+        <form action="{% url 'ingest:upload' %}" method="post"  enctype="multipart/form-data">
+        {% csrf_token %}
+            {{ form }}
+        <div><button type="submit" name="upload">upload</button></div>
+        </form>
+         {% if error %}
+            <div><span style="color: red">{{ error }}</span></div>
+         {% endif %}
+        <button id="send" class="ui button primary">get all users</button>
+    </body>
+    <script src="{% static 'ingest/js/jquery-1.11.2.min.js' %}"></script>
+    <script src="{% static 'ingest/css/semantic.js' %}"></script>
+    <script src="{% static 'ingest/js/app.js' %}"></script>
+</html>

@@ -1,0 +1,82 @@
+{% load staticfiles %}
+<!Doctype html>
+<html>
+    <head>
+        <meta charset='utf-8'/>
+        <title>archiva:perservation made easy</title>        
+        <!-- All stylesheets -->
+        <link rel="stylesheet" href="{% static 'ingest/css/semantic.css' %}" />
+        <link rel="stylesheet" href="{% static 'ingest/css/icons.css' %}" />
+        <link rel="stylesheet" href="{% static 'ingest/css/main.css' %}" />
+        <link rel="stylesheet" href="{% static 'ingest/css/reg.css' %}" />
+    </head>
+    <body class="body-w">
+        <!-- header and navigation area 
+        <header class="ui fixed menu">
+             <div class="ui item bar">
+                 <a href="{% url 'ingest:index' %}">
+                     <h2 class="ui header"><span class="icon icon-book "></span>Archiva</h2>
+                 </a>
+              </div>
+        </header>-->
+        
+        <header class="ui container formhead slim">
+            <a href="{% url 'ingest:index' %}">
+                <h2><span class="icon icon-book"></span>&nbsp;Archiva</h2>
+            </a>
+        </header>
+        <!-- -->
+        <section class="ui container mediumwidth">            
+            <div class="ui three column grid c">
+                <div class="row strip">
+                    <div class="column dblue"></div>
+                    <div class="column lgray"></div>
+                    <div class="column dblue"></div>
+                </div>
+            </div>
+                       
+            <header class="ui container formhead">
+                <h1>Signup</h1>
+            </header>
+            <form class="ui equal width form fluid signup" action="{% url 'ingest:signup' %}" method="post">
+                {% csrf_token %}
+                <div class="fourteen wide field"> 
+                     <label for="firstname">Firstname</label>        
+                     <input type="text" name="firstname" placeholder="Okoye" />
+                </div>
+                <div class="fourteen wide field">
+                     <label for="lastname">Lastname</label>
+                     <input type="text" name="lastname" placeholder="Michael" />
+                </div>
+                <div class="fourteen wide field">
+                     <label for="interest">Field of interest</label>
+                     <input type="text" name="interest" placeholder="Enter field of interest" />
+                </div>
+                <div class="fourteen wide field">
+                     <label for="email">Email</label>
+                     <input type="email" name="email" placeholder="m@cheeky.com" />
+                </div>
+                <div class="fourteen wide field">
+                     <label for="password">Password</label>
+                     <input type="password" name="password" placeholder="********" />
+                </div>
+                <div class="fourteen wide field">
+                     <label for="confirm password">Confirm password</label>
+                     <input type="password" name="cpassword" placeholder="********" />
+                </div>
+                <div class="sixteen wide field">
+                    <button class="ui large submit button" type="submit" name="login" value="logged">Signup</button>
+                    <div>
+                        <span style="color: red">{{ error }}</span>
+                    </div>
+                </div>
+            </form>  
+            <br/><br/>
+        </section>
+        <footer class="ui container">
+            miisoft corp
+        </footer>
+    </body>    
+    <!-- Script files -->
+    <script src=""></script>       
+</html>

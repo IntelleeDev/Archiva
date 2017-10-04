@@ -1,0 +1,19 @@
+{% load staticfiles %}
+<section class="ui container repo-area">
+   <header class="ui four column grid">
+        <div class="column"><h2>Search</h2></div>
+        <div class="column">
+        </div>
+        <div class="column"></div>
+        <div class="column">
+            <div class="ui right floated">
+               <div class="ui len search">
+                  <input class="prompt" type="text" placeholder="search" autocomplete="off">
+                  <div class="results"></div>
+               </div>
+            </div>
+        </div>
+    </header>
+    <div class="ui section divider"></div>
+</section>
+<script src="{% static 'ingest/js/search.js' %}"></script>
